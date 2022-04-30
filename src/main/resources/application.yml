@@ -1,0 +1,40 @@
+server:
+  port: 8011
+
+spring:
+  freemarker:
+    suffix: .html
+    cache: false
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    locale: zh_CN
+    generator:
+      write-numbers-as-strings: true
+      write-bigdecimal-as-plain: true
+    serialization:
+      write-dates-as-timestamps: false
+
+  datasource:
+    url: jdbc:mysql:///ksd-user-cours-db?serverTimezone=GMT%2b8&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: admin
+    hikari:
+        connection-timeout: 60000
+        validation-timeout: 3000
+        idle-timeout: 60000
+        login-timeout: 5
+        max-lifetime: 60000
+        maximum-pool-size: 30
+        minimum-idle: 10
+        read-only: false
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:/mapper/*.xml
+
+logging:
+  level:
+    root: info
